@@ -11,7 +11,7 @@ export const projects: Project[] = [
   { title: "Bapas malang", category: "Banner", client: "Komunitas kampus", year: "2024", tone: "violet" },
   { title: "Sambel Bu Tutik", category: "Kemasan", client: "UMKM Kuliner", year: "2024", tone: "glare" },
   { title: "Flores Tourism Sentiment", category: "UI / UX", client: "Wisata", year: "2025", tone: "ash" },
-  { title: "Laporan Project Inovasi", category: "Pembuatan Laporan", client: "Mahasiswa Teknik", year: "2024", tone: "ink" },
+  { title: "Laporan Project Inovasi", category: "Pembuatan Laporan", client: "Bapas Malang", year: "2024", tone: "ink" },
   { title: "Toko Bunga Mawar", category: "Pembuatan Website", client: "Florist Jakarta", year: "2025", tone: "orange" },
   { title: "GymBro Personal Brand", category: "Desain Logo", client: "Fitness coach", year: "2025", tone: "violet" },
   { title: "Roti Panggang Lite", category: "Kemasan", client: "Home bakery", year: "2024", tone: "glare" },

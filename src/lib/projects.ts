@@ -26,9 +26,9 @@ export const demos = [
     tone: "orange" as const,
   },
   {
-    title: "Coming Soon",
-    description: "Project rahasia, akan tayang sebentar lagi.",
-    url: null,
+    title: "Stok Pro",
+    description: "Aplikasi manajemen stok barang dengan fitur tracking real-time.",
+    url: "https://stok-pro-v1.vercel.app",
     tone: "violet" as const,
   },
   {

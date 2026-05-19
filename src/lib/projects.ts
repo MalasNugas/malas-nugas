@@ -12,7 +12,7 @@ export const projects: Project[] = [
   { title: "​Sabun Necis", category: "Kemasan", client: "UMKM Kuliner", year: "2024", tone: "glare" },
   { title: "Flores Tourism Sentiment", category: "UI / UX", client: "Wisata", year: "2025", tone: "ash" },
   { title: "Laporan Project Inovasi", category: "Pembuatan Laporan", client: "Bapas Malang", year: "2024", tone: "ink" },
-  { title: "Toko Bunga Mawar", category: "Pembuatan Website", client: "Florist Jakarta", year: "2025", tone: "orange" },
+  { title: "Flores Tourism Sentimen", category: "Pembuatan Website", client: "Florist Jakarta", year: "2025", tone: "orange" },
   { title: "GymBro Personal Brand", category: "Desain Logo", client: "Fitness coach", year: "2025", tone: "violet" },
   { title: "Roti Panggang Lite", category: "Kemasan", client: "Home bakery", year: "2024", tone: "glare" },
   { title: "Sistem Absen Mahasiswa", category: "UI / UX", client: "Project akhir", year: "2025", tone: "ash" },

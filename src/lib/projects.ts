@@ -9,7 +9,7 @@ export interface Project {
 export const projects: Project[] = [
   { title: "Mimika Rumah Kita", category: "Desain Logo", client: "Coffee shop lokal", year: "2024", tone: "orange" },
   { title: "Bapas malang", category: "Banner", client: "Komunitas kampus", year: "2024", tone: "violet" },
-  { title: "Sambel Bu Tutik", category: "Kemasan", client: "UMKM Kuliner", year: "2024", tone: "glare" },
+  { title: "​Sabun Necis", category: "Kemasan", client: "UMKM Kuliner", year: "2024", tone: "glare" },
   { title: "Flores Tourism Sentiment", category: "UI / UX", client: "Wisata", year: "2025", tone: "ash" },
   { title: "Laporan Project Inovasi", category: "Pembuatan Laporan", client: "Bapas Malang", year: "2024", tone: "ink" },
   { title: "Toko Bunga Mawar", category: "Pembuatan Website", client: "Florist Jakarta", year: "2025", tone: "orange" },

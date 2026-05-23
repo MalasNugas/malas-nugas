@@ -11,5 +11,18 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
+    prerender: {
+      enabled: true,
+      crawlLinks: true,
+      concurrency: 4,
+      failOnError: false,
+      pages: [
+        { path: "/", prerender: { enabled: true } },
+        { path: "/services", prerender: { enabled: true } },
+        { path: "/portfolio", prerender: { enabled: true } },
+        { path: "/demos", prerender: { enabled: true } },
+        { path: "/contact", prerender: { enabled: true } },
+      ],
+    },
   },
 });

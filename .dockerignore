@@ -1,0 +1,10 @@
+node_modules
+dist
+.tanstack
+.output
+.git
+.lovable
+.workspace
+.vscode
+.idea
+*.log

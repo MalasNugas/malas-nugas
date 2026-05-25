@@ -7,13 +7,13 @@ import { projects } from "@/lib/projects";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Malas Nugas — Jasa Joki Desain, Laporan & Website" },
+      { title: "Malas Nugas" },
       {
         name: "description",
         content:
           "Order jasa joki: desain logo, banner, kemasan, UI/UX, laporan, dan website. Langsung chat WhatsApp.",
       },
-      { property: "og:title", content: "Malas Nugas — Jasa Joki" },
+      { property: "og:title", content: "Malas Nugas" },
       { property: "og:description", content: "Joki tugas, desain, dan website untuk mahasiswa & UMKM." },
       { property: "og:url", content: "/" },
     ],

@@ -59,7 +59,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Malas Nugas — Jasa Joki Desain, Laporan & Website" },
+      { title: "Malas Nugas" },
       {
         name: "description",
         content:
@@ -68,7 +68,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "Malas Nugas" },
       { property: "og:site_name", content: "Malas Nugas" },
       { property: "og:type", content: "website" },
-      { property: "og:title", content: "Malas Nugas — Jasa Joki Desain, Laporan & Website" },
+      { property: "og:title", content: "Malas Nugas" },
       { property: "og:description", content: "Joki tugas, desain, dan website untuk mahasiswa & UMKM." },
       { name: "twitter:card", content: "summary_large_image" },
     ],

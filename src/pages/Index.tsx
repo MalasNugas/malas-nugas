@@ -1,31 +1,17 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PixelBlob } from "@/components/PixelBlob";
 import { services } from "@/lib/services";
 import { projects } from "@/lib/projects";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Malas Nugas" },
-      {
-        name: "description",
-        content:
-          "Order jasa joki: desain logo, banner, kemasan, UI/UX, laporan, dan website. Langsung chat WhatsApp.",
-      },
-      { property: "og:title", content: "Malas Nugas" },
-      { property: "og:description", content: "Joki tugas, desain, dan website untuk mahasiswa & UMKM." },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
-  component: Index,
-});
+export default function Index() {
+  useEffect(() => {
+    document.title = "Malas Nugas";
+  }, []);
 
-function Index() {
   return (
     <div className="container-page space-y-10 py-10">
-      {/* HERO */}
       <section className="relative overflow-hidden rounded-[40px] bg-ash p-8 md:p-16">
         <div className="absolute -right-12 -top-12 hidden md:block">
           <PixelBlob className="h-[420px] w-[420px]" />
@@ -57,7 +43,6 @@ function Index() {
         </div>
       </section>
 
-      {/* STATS */}
       <section className="grid gap-4 md:grid-cols-4">
         {[
           { n: "500+", l: "Project selesai" },
@@ -75,7 +60,6 @@ function Index() {
         ))}
       </section>
 
-      {/* SERVICES PREVIEW */}
       <section>
         <div className="flex items-end justify-between gap-4">
           <h2 className="font-display text-5xl md:text-7xl">Layanan kita</h2>
@@ -101,7 +85,6 @@ function Index() {
         </div>
       </section>
 
-      {/* PORTFOLIO PREVIEW */}
       <section>
         <div className="flex items-end justify-between gap-4">
           <h2 className="font-display text-5xl md:text-7xl">Portfolio pilihan</h2>
@@ -116,7 +99,6 @@ function Index() {
         </div>
       </section>
 
-      {/* CTA BIG */}
       <section className="rounded-[40px] bg-ink p-10 text-pure md:p-16 relative overflow-hidden">
         <div className="absolute -right-10 -bottom-10 opacity-30">
           <PixelBlob className="h-[300px] w-[300px]" variant="orange" />

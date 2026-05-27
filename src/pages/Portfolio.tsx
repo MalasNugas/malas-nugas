@@ -1,20 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { projects } from "@/lib/projects";
-
-export const Route = createFileRoute("/portfolio")({
-  head: () => ({
-    meta: [
-      { title: "Portfolio — Malas Nugas" },
-      { name: "description", content: "Kumpulan project Malas Nugas: logo, banner, kemasan, UI/UX, laporan, website." },
-      { property: "og:title", content: "Portfolio — Malas Nugas" },
-      { property: "og:description", content: "Lihat project yang sudah pernah kita kerjakan." },
-      { property: "og:url", content: "/portfolio" },
-    ],
-    links: [{ rel: "canonical", href: "/portfolio" }],
-  }),
-  component: PortfolioPage,
-});
 
 const toneMap: Record<string, { bg: string; fg: string }> = {
   orange: { bg: "bg-orange", fg: "text-pure" },
@@ -24,7 +10,11 @@ const toneMap: Record<string, { bg: string; fg: string }> = {
   ash: { bg: "bg-ash", fg: "text-ink" },
 };
 
-function PortfolioPage() {
+export default function Portfolio() {
+  useEffect(() => {
+    document.title = "Portfolio — Malas Nugas";
+  }, []);
+
   return (
     <div className="container-page space-y-10 py-10">
       <section className="rounded-[40px] bg-ash p-10 md:p-16">

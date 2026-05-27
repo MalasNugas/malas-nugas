@@ -1,9 +1,0 @@
-:80 {
-	root * /usr/share/caddy
-	encode gzip zstd
-	file_server
-
-	# SPA fallback — kalau file tidak ada, serve index.html
-	# agar client-side routing TanStack Router tetap jalan.
-	try_files {path} {path}/index.html /index.html
-}

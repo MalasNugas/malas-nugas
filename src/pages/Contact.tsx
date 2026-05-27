@@ -1,20 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PixelBlob } from "@/components/PixelBlob";
-
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Kontak — Malas Nugas" },
-      { name: "description", content: "Hubungi Malas Nugas via WhatsApp untuk order jasa joki. Online 24/7." },
-      { property: "og:title", content: "Kontak — Malas Nugas" },
-      { property: "og:description", content: "Chat WhatsApp untuk konsultasi gratis & order." },
-      { property: "og:url", content: "/contact" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-  }),
-  component: ContactPage,
-});
 
 const faqs = [
   {
@@ -35,7 +21,11 @@ const faqs = [
   },
 ];
 
-function ContactPage() {
+export default function Contact() {
+  useEffect(() => {
+    document.title = "Kontak — Malas Nugas";
+  }, []);
+
   return (
     <div className="container-page space-y-10 py-10">
       <section className="relative overflow-hidden rounded-[40px] bg-orange p-10 text-pure md:p-16">

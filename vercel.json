@@ -1,8 +1,5 @@
 {
   "buildCommand": "bun run build",
-  "outputDirectory": "dist/client",
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/((?!assets/|favicon\\.svg|.*\\.[a-zA-Z0-9]+$).*)", "destination": "/_shell.html" }
-  ]
+  "outputDirectory": "dist",
+  "rewrites": [{ "source": "/((?!assets/|favicon\\.svg|.*\\..*).*)", "destination": "/index.html" }]
 }

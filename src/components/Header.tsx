@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { useState } from "react";
 
@@ -25,15 +25,18 @@ export function Header() {
 
         <nav className="hidden items-center gap-1 md:flex">
           {nav.map((item) => (
-            <Link
+            <NavLink
               key={item.to}
               to={item.to}
-              className="rounded-[40px] px-4 py-2 text-sm hover:bg-canvas"
-              activeProps={{ className: "bg-ink text-pure rounded-[40px] px-4 py-2 text-sm" }}
-              activeOptions={{ exact: true }}
+              end
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-ink text-pure rounded-[40px] px-4 py-2 text-sm"
+                  : "rounded-[40px] px-4 py-2 text-sm hover:bg-canvas"
+              }
             >
               {item.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
@@ -56,16 +59,19 @@ export function Header() {
         <div className="mt-3 rounded-[40px] bg-ash p-5 md:hidden">
           <div className="flex flex-col gap-1">
             {nav.map((item) => (
-              <Link
+              <NavLink
                 key={item.to}
                 to={item.to}
+                end
                 onClick={() => setOpen(false)}
-                className="rounded-[40px] px-4 py-3 text-base hover:bg-canvas"
-                activeProps={{ className: "bg-ink text-pure rounded-[40px] px-4 py-3 text-base" }}
-                activeOptions={{ exact: true }}
+                className={({ isActive }) =>
+                  isActive
+                    ? "bg-ink text-pure rounded-[40px] px-4 py-3 text-base"
+                    : "rounded-[40px] px-4 py-3 text-base hover:bg-canvas"
+                }
               >
                 {item.label}
-              </Link>
+              </NavLink>
             ))}
             <WhatsAppButton className="mt-3 justify-center">Order via WhatsApp</WhatsAppButton>
           </div>

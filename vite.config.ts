@@ -1,11 +1,9 @@
-// Vercel-friendly build: disable the Cloudflare Worker bundler and
-// emit a static SPA (dist/client/_shell.html + assets).
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  cloudflare: false,
-  tanstackStart: {
-    server: { entry: "server" },
-    spa: { enabled: true },
-  },
+  plugins: [react(), tailwindcss(), tsconfigPaths()],
+  server: { host: "::", port: 8080 },
 });

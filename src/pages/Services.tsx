@@ -1,22 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { services } from "@/lib/services";
 
-export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Layanan — Malas Nugas" },
-      { name: "description", content: "6 jasa joki Malas Nugas: logo, banner, kemasan, UI/UX, laporan, website." },
-      { property: "og:title", content: "Layanan — Malas Nugas" },
-      { property: "og:description", content: "Pilih layanan jasa joki yang kamu butuhkan." },
-      { property: "og:url", content: "/services" },
-    ],
-    links: [{ rel: "canonical", href: "/services" }],
-  }),
-  component: ServicesPage,
-});
+export default function Services() {
+  useEffect(() => {
+    document.title = "Layanan — Malas Nugas";
+  }, []);
 
-function ServicesPage() {
   return (
     <div className="container-page space-y-10 py-10">
       <section className="rounded-[40px] bg-ash p-10 md:p-16">

@@ -1,22 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { demos } from "@/lib/projects";
 
-export const Route = createFileRoute("/demos")({
-  head: () => ({
-    meta: [
-      { title: "Live Demo — Malas Nugas" },
-      { name: "description", content: "Live demo website hasil karya Malas Nugas. Bisa langsung dicoba." },
-      { property: "og:title", content: "Live Demo — Malas Nugas" },
-      { property: "og:description", content: "Coba langsung website yang sudah kita buat." },
-      { property: "og:url", content: "/demos" },
-    ],
-    links: [{ rel: "canonical", href: "/demos" }],
-  }),
-  component: DemosPage,
-});
+export default function Demos() {
+  useEffect(() => {
+    document.title = "Live Demo — Malas Nugas";
+  }, []);
 
-function DemosPage() {
   return (
     <div className="container-page space-y-10 py-10">
       <section className="rounded-[40px] bg-ash p-10 md:p-16">
@@ -87,7 +77,7 @@ function DemosPage() {
           Dari landing page sampai web app fungsional, kita siap garap.
         </p>
         <div className="mt-6 flex justify-center">
-          <WhatsAppButton message="Halo Malas Nugas, saya mau order pembuatan website." >
+          <WhatsAppButton message="Halo Malas Nugas, saya mau order pembuatan website.">
             Order Website
           </WhatsAppButton>
         </div>

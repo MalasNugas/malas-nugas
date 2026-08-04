@@ -131,4 +131,104 @@
     background-size: 24px 24px;
     opacity: 0.06;
   }
+
+  .hero-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+
+  .hero-gradient {
+    background: linear-gradient(
+      120deg,
+      #070607 0%,
+      #fc5000 38%,
+      #524ae9 72%,
+      #070607 100%
+    );
+    background-size: 300% 300%;
+    animation: gradient-shift 18s ease infinite;
+  }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(#ffffff 1px, transparent 1px),
+      linear-gradient(90deg, #ffffff 1px, transparent 1px);
+    background-size: 48px 48px;
+    animation: grid-drift 14s linear infinite;
+  }
+
+  .marquee {
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .marquee-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation-name: marquee;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+
+  .link-underline {
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
 }
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes grid-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 48px 48px;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+

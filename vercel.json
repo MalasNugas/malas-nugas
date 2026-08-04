@@ -1,5 +1,5 @@
 {
-  "buildCommand": "bun run build",
+  "framework": "vite",
   "outputDirectory": "dist",
   "rewrites": [{ "source": "/((?!assets/|favicon\\.svg|.*\\..*).*)", "destination": "/index.html" }]
 }

@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { WhatsAppButton } from "./WhatsAppButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const nav = [
   { to: "/", label: "Beranda" },
@@ -12,10 +12,24 @@ const nav = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const solid = scrolled || open;
 
   return (
-    <header className="container-page pt-6">
-      <div className="flex items-center justify-between gap-4 rounded-[40px] bg-ash px-5 py-3">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+        solid ? "bg-ink/95 py-2 backdrop-blur-md" : "bg-transparent py-5"
+      }`}
+    >
+      <div className="container-page flex items-center justify-between gap-4 text-pure">
         <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
           <span className="grid h-9 w-9 place-items-center rounded-[14px] bg-orange text-pure font-display text-xl">
             M
@@ -23,16 +37,16 @@ export function Header() {
           <span className="font-display text-2xl tracking-wide">Malas Nugas</span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-7 md:flex">
           {nav.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               end
               className={({ isActive }) =>
-                isActive
-                  ? "bg-ink text-pure rounded-[40px] px-4 py-2 text-sm"
-                  : "rounded-[40px] px-4 py-2 text-sm hover:bg-canvas"
+                `link-underline text-xs uppercase tracking-[0.2em] transition-opacity ${
+                  isActive ? "opacity-100 text-orange" : "opacity-80 hover:opacity-100"
+                }`
               }
             >
               {item.label}
@@ -45,7 +59,7 @@ export function Header() {
         </div>
 
         <button
-          className="md:hidden rounded-full bg-ink p-3 text-pure"
+          className="md:hidden rounded-full bg-pure/15 p-3"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -56,24 +70,26 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="mt-3 rounded-[40px] bg-ash p-5 md:hidden">
-          <div className="flex flex-col gap-1">
-            {nav.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-ink text-pure rounded-[40px] px-4 py-3 text-base"
-                    : "rounded-[40px] px-4 py-3 text-base hover:bg-canvas"
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
-            <WhatsAppButton className="mt-3 justify-center">Order via WhatsApp</WhatsAppButton>
+        <div className="container-page md:hidden">
+          <div className="mt-3 rounded-[32px] bg-ink p-5 text-pure">
+            <div className="flex flex-col gap-1">
+              {nav.map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  end
+                  onClick={() => setOpen(false)}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "rounded-[40px] bg-orange px-4 py-3 text-base"
+                      : "rounded-[40px] px-4 py-3 text-base hover:bg-pure/10"
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+              <WhatsAppButton className="mt-3 justify-center">Order via WhatsApp</WhatsAppButton>
+            </div>
           </div>
         </div>
       )}

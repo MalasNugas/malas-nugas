@@ -1,4 +1,4 @@
-ated# Vercel Tidak Membuat Deployment Baru
+# Vercel Tidak Membuat Deployment Baru
 
 Kode terbaru sudah ada di GitHub, tapi Vercel tidak membuat deployment baru sama sekali. Artinya masalahnya ada di sambungan Git → Vercel, bukan di kode. `vercel.json` dan `vite.config.ts` di proyek ini sudah benar untuk SPA React (output `dist`, rewrite ke `index.html`), jadi tidak ada yang perlu diubah di kode.
 

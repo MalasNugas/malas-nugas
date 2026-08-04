@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { PixelBlob } from "@/components/PixelBlob";
+import { Hero } from "@/components/Hero";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 
 const faqs = [
   {
@@ -27,56 +28,52 @@ export default function Contact() {
   }, []);
 
   return (
-    <div className="container-page space-y-10 py-10">
-      <section className="relative overflow-hidden rounded-[40px] bg-orange p-10 text-pure md:p-16">
-        <div className="absolute -right-10 -top-10 opacity-30">
-          <PixelBlob className="h-[320px] w-[320px]" variant="violet" />
-        </div>
-        <div className="relative max-w-2xl">
-          <span className="text-xs uppercase tracking-widest opacity-80">Kontak</span>
-          <h1 className="mt-4 font-display text-6xl md:text-8xl">
-            Mari ngobrol.
-          </h1>
-          <p className="mt-5 max-w-lg opacity-95">
-            Cara tercepat: langsung chat WhatsApp. Online 24/7 (kecuali pas tidur).
-            Konsultasi gratis, no spam, no ribet.
-          </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <WhatsAppButton variant="ink" message="Halo Malas Nugas, saya mau konsultasi." />
-            <a href="tel:+6285738748543" className="btn-pill border-2 border-pure">
-              0857-3874-8543
-            </a>
-          </div>
-        </div>
-      </section>
+    <div>
+      <Hero
+        eyebrow="Kontak"
+        lines={["Mari", "ngobrol"]}
+        accent="."
+        subtitle="Cara tercepat: langsung chat WhatsApp. Online 24/7 (kecuali pas tidur). Konsultasi gratis, no spam, no ribet."
+      >
+        <WhatsAppButton variant="ink" message="Halo Malas Nugas, saya mau konsultasi." />
+        <a href="tel:+6285738748543" className="btn-pill border-2 border-pure text-pure">
+          0857-3874-8543
+        </a>
+      </Hero>
 
-      <section className="grid gap-4 md:grid-cols-3">
-        {[
-          { label: "WhatsApp", value: "0857-3874-8543" },
-          { label: "Jam respon", value: "< 10 menit" },
-          { label: "Wilayah", value: "Seluruh Indonesia" },
-        ].map((c, i) => (
-          <div
-            key={c.label}
-            className={`rounded-[40px] p-8 ${i === 1 ? "bg-ink text-pure" : "bg-ash"}`}
-          >
-            <div className="text-xs uppercase tracking-widest opacity-70">{c.label}</div>
-            <div className="mt-3 font-display text-3xl">{c.value}</div>
-          </div>
-        ))}
-      </section>
-
-      <section>
-        <h2 className="font-display text-5xl md:text-7xl">FAQ singkat.</h2>
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          {faqs.map((f) => (
-            <div key={f.q} className="rounded-[40px] bg-ash p-8">
-              <h3 className="font-display text-2xl">{f.q}</h3>
-              <p className="mt-3 text-sm">{f.a}</p>
-            </div>
+      <div className="container-page space-y-24 py-24">
+        <RevealGroup className="grid gap-4 md:grid-cols-3">
+          {[
+            { label: "WhatsApp", value: "0857-3874-8543" },
+            { label: "Jam respon", value: "< 10 menit" },
+            { label: "Wilayah", value: "Seluruh Indonesia" },
+          ].map((c, i) => (
+            <RevealItem
+              key={c.label}
+              className={`rounded-[40px] p-8 transition-transform duration-500 hover:-translate-y-2 ${
+                i === 1 ? "bg-ink text-pure" : "bg-ash"
+              }`}
+            >
+              <div className="text-xs uppercase tracking-widest opacity-70">{c.label}</div>
+              <div className="mt-3 font-display text-3xl">{c.value}</div>
+            </RevealItem>
           ))}
-        </div>
-      </section>
+        </RevealGroup>
+
+        <section>
+          <Reveal>
+            <h2 className="font-display text-6xl md:text-8xl">FAQ singkat.</h2>
+          </Reveal>
+          <RevealGroup className="mt-10 grid gap-4 md:grid-cols-2">
+            {faqs.map((f) => (
+              <RevealItem key={f.q} className="rounded-[40px] bg-ash p-8">
+                <h3 className="font-display text-2xl">{f.q}</h3>
+                <p className="mt-3 text-sm">{f.a}</p>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </section>
+      </div>
     </div>
   );
 }

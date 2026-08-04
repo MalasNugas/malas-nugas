@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { Hero } from "@/components/Hero";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { projects } from "@/lib/projects";
 
 const toneMap: Record<string, { bg: string; fg: string }> = {
@@ -16,51 +18,51 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="container-page space-y-10 py-10">
-      <section className="rounded-[40px] bg-ash p-10 md:p-16">
-        <span className="text-xs uppercase tracking-widest">Portfolio</span>
-        <h1 className="mt-4 font-display text-6xl md:text-8xl">
-          Hasil kerja
-          <br />
-          <span className="text-orange">terbaik.</span>
-        </h1>
-        <p className="mt-5 max-w-2xl">
-          Sebagian project yang sudah pernah kita selesaikan untuk mahasiswa,
-          UMKM, dan brand kecil-menengah.
-        </p>
-      </section>
+    <div>
+      <Hero
+        eyebrow="Portfolio"
+        lines={["Hasil kerja", "terbaik"]}
+        accent="."
+        subtitle="Sebagian project yang sudah pernah kita selesaikan untuk mahasiswa, UMKM, dan brand kecil-menengah."
+      />
 
-      <section className="grid gap-4 md:grid-cols-3">
-        {projects.map((p) => {
-          const t = toneMap[p.tone];
-          return (
-            <article key={p.title} className={`rounded-[40px] ${t.bg} ${t.fg} p-8`}>
-              <div className="aspect-[4/3] rounded-[24px] bg-pure/10 grid place-items-center overflow-hidden relative">
-                <div className="absolute inset-0 pixel-grid" />
-                <span className="font-display text-8xl opacity-40 relative">
-                  {p.title.charAt(0)}
-                </span>
-              </div>
-              <div className="mt-5 flex items-center justify-between text-xs uppercase tracking-widest opacity-70">
-                <span>{p.category}</span>
-                <span>{p.year}</span>
-              </div>
-              <h2 className="mt-2 font-display text-3xl">{p.title}</h2>
-              <p className="mt-2 text-sm opacity-80">{p.client}</p>
-            </article>
-          );
-        })}
-      </section>
+      <div className="container-page space-y-24 py-24">
+        <RevealGroup className="grid gap-4 md:grid-cols-3">
+          {projects.map((p) => {
+            const t = toneMap[p.tone];
+            return (
+              <RevealItem key={p.title}>
+                <article
+                  className={`group rounded-[40px] ${t.bg} ${t.fg} p-8 transition-transform duration-500 hover:-translate-y-2`}
+                >
+                  <div className="relative grid aspect-[4/3] place-items-center overflow-hidden rounded-[24px] bg-pure/10">
+                    <div className="absolute inset-0 pixel-grid" />
+                    <span className="relative font-display text-8xl opacity-40 transition-transform duration-700 group-hover:scale-110">
+                      {p.title.charAt(0)}
+                    </span>
+                  </div>
+                  <div className="mt-5 flex items-center justify-between text-xs uppercase tracking-widest opacity-70">
+                    <span>{p.category}</span>
+                    <span>{p.year}</span>
+                  </div>
+                  <h2 className="mt-2 font-display text-3xl">{p.title}</h2>
+                  <p className="mt-2 text-sm opacity-80">{p.client}</p>
+                </article>
+              </RevealItem>
+            );
+          })}
+        </RevealGroup>
 
-      <section className="rounded-[40px] bg-ink p-10 text-pure md:p-16 text-center">
-        <h2 className="font-display text-4xl md:text-6xl">Project kamu next?</h2>
-        <p className="mx-auto mt-3 max-w-lg opacity-80">
-          Yuk diskusi ide kamu. Konsultasi gratis, langsung dapet estimasi.
-        </p>
-        <div className="mt-6 flex justify-center">
-          <WhatsAppButton message="Halo Malas Nugas, saya mau diskusi project baru." />
-        </div>
-      </section>
+        <Reveal className="rounded-[40px] bg-ink p-10 text-center text-pure md:p-16">
+          <h2 className="font-display text-5xl md:text-7xl">Project kamu next?</h2>
+          <p className="mx-auto mt-3 max-w-lg opacity-80">
+            Yuk diskusi ide kamu. Konsultasi gratis, langsung dapet estimasi.
+          </p>
+          <div className="mt-6 flex justify-center">
+            <WhatsAppButton message="Halo Malas Nugas, saya mau diskusi project baru." />
+          </div>
+        </Reveal>
+      </div>
     </div>
   );
 }
